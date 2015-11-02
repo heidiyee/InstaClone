@@ -8,5 +8,6 @@
 
 import Foundation
 
-let kParseApplicationId = “CxF7R0XRDhhioyTnQwkIxcC0TcUmZJngRbhy6YBk”
-let kParseApplicationClientKey = “3XvTQ2csex5RINLaaOBmrS9aK1u5wDYA1B7jxA1W”
+let kParseApplicationId = "CxF7R0XRDhhioyTnQwkIxcC0TcUmZJngRbhy6YBk"
+let kParseApplicationClientKey = "3XvTQ2csex5RINLaaOBmrS9aK1u5wDYA1B7jxA1W"
+
