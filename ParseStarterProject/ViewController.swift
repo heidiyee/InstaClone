@@ -34,22 +34,51 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+
+    
     @IBAction func addImageButtonSelected(sender: UIButton) {
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+        let cameraAlert = UIAlertController(title: "Select photo", message: "From...", preferredStyle: .ActionSheet)
+        
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default) { (action) -> Void in
+            
+            print("Camera selected")
+            //Camera action selected
             
             imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
             imagePickerController.allowsEditing = true
             self.presentViewController(imagePickerController, animated: true, completion: nil)
+        }
+        
+        let libraryAction = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default) { (action) -> Void in
+        
+            print("Photo Library selected")
+            //Photo Library action selected
             
-        } else if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
             imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             imagePickerController.allowsEditing = true
             self.presentViewController(imagePickerController, animated: true, completion: nil)
         }
+        
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            cameraAction.enabled = false
+        }
+        else if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+            libraryAction.enabled = false
+        }
+    
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        cameraAlert.addAction(cameraAction)
+        cameraAlert.addAction(libraryAction)
+        cameraAlert.addAction(cancelAction)
+        
+        self.presentViewController(cameraAlert, animated: true, completion: nil)
+        
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
