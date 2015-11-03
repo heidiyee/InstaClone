@@ -19,12 +19,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "two"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            print("Object has been saved.")
-        }
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,5 +79,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         picker.dismissViewControllerAnimated(true, completion: nil)
         self.imageView.image = image
+        
+        if let imageData = UIImageJPEGRepresentation(image, 0.7) {
+            
+            let imageFile = PFFile(name: "image", data: imageData)
+            let testObject = PFObject(className: "TestObject")
+            testObject["foo"] = "two"
+            testObject["image"] = imageFile
+            testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                print("Object has been saved.")
+            }
+        }
     }
 }

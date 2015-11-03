@@ -3,8 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -33,51 +31,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="svZ-we-e1R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="00i-CJ-Kql"/>
                             <constraint firstItem="Pjl-qc-xTu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" constant="1" id="1ss-cf-OPW"/>
-                            <constraint firstItem="svZ-we-e1R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" multiplier="0.8" id="2E7-bV-pre"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="svZ-we-e1R" secondAttribute="bottom" id="2b4-bH-FGY"/>
                             <constraint firstItem="Pjl-qc-xTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2ed-0q-FYq"/>
-                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="top" secondItem="svZ-we-e1R" secondAttribute="bottom" constant="2" id="2rQ-kA-yec"/>
-                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6cJ-G4-pDr"/>
-                            <constraint firstItem="svZ-we-e1R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8i3-92-NlT"/>
                             <constraint firstItem="Pjl-qc-xTu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Aje-Zc-h3b"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="svZ-we-e1R" secondAttribute="bottom" multiplier="0.8" constant="1" id="Ame-wD-uQh"/>
                             <constraint firstItem="Pjl-qc-xTu" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" constant="1" id="Azj-N0-Pwm"/>
                             <constraint firstItem="svZ-we-e1R" firstAttribute="width" secondItem="Pjl-qc-xTu" secondAttribute="width" id="Eiq-xd-ccP"/>
-                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="NBm-OT-GjI"/>
-                            <constraint firstItem="svZ-we-e1R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="T5t-rd-jx4"/>
-                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="bez-nl-ca2"/>
-                            <constraint firstItem="svZ-we-e1R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" multiplier="0.8" id="cCS-ub-UXv"/>
-                            <constraint firstAttribute="trailing" secondItem="svZ-we-e1R" secondAttribute="trailing" multiplier="0.8" id="cif-2L-UAZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="svZ-we-e1R" secondAttribute="trailing" id="k41-fB-Zvb"/>
                             <constraint firstItem="svZ-we-e1R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n44-u2-8o6"/>
                             <constraint firstItem="svZ-we-e1R" firstAttribute="height" secondItem="Pjl-qc-xTu" secondAttribute="height" id="pbI-RP-cyp"/>
                             <constraint firstItem="svZ-we-e1R" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sas-sO-AHn"/>
-                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="uFt-0X-ILl"/>
-                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uz4-8g-98R"/>
-                            <constraint firstItem="svZ-we-e1R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ys9-LP-oSg"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2rQ-kA-yec"/>
-                                <exclude reference="6cJ-G4-pDr"/>
-                                <exclude reference="NBm-OT-GjI"/>
-                                <exclude reference="bez-nl-ca2"/>
-                                <exclude reference="uFt-0X-ILl"/>
-                                <exclude reference="uz4-8g-98R"/>
-                                <exclude reference="00i-CJ-Kql"/>
-                                <exclude reference="2E7-bV-pre"/>
-                                <exclude reference="8i3-92-NlT"/>
-                                <exclude reference="T5t-rd-jx4"/>
-                                <exclude reference="cCS-ub-UXv"/>
-                                <exclude reference="cif-2L-UAZ"/>
-                                <exclude reference="k41-fB-Zvb"/>
-                                <exclude reference="ys9-LP-oSg"/>
-                                <exclude reference="2b4-bH-FGY"/>
-                                <exclude reference="Ame-wD-uQh"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ROt-XJ-d0I"/>
                     <connections>
@@ -92,6 +54,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="oSs-Zs-Fjp">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r3S-uz-C8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jgT-5m-lSA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Lle-hA-5TP">
@@ -102,7 +65,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Osz-MR-RQi"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r3S-uz-C8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="340" y="245"/>
         </scene>
