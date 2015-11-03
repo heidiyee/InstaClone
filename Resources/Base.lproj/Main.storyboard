@@ -6,10 +6,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--User Image-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="User Image" id="BYZ-38-t0r" customClass="ViewController" customModule="InstaClone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -19,37 +19,82 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svZ-we-e1R">
-                                <rect key="frame" x="59" y="59" width="481" height="481"/>
+                                <rect key="frame" x="149" y="200" width="301" height="200"/>
                                 <connections>
                                     <action selector="addImageButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O8u-vy-La4"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pjl-qc-xTu">
-                                <rect key="frame" x="59" y="59" width="481" height="481"/>
+                                <rect key="frame" x="149" y="200" width="301" height="200"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="nxf-qG-qFz"/>
+                                </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Lg-PL-Yk2">
+                                <rect key="frame" x="252" y="408" width="95" height="30"/>
+                                <state key="normal" title="Upload Image"/>
+                                <connections>
+                                    <action selector="uploadImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dry-0L-ElP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL9-XT-jhM">
+                                <rect key="frame" x="279" y="446" width="42" height="30"/>
+                                <state key="normal" title="Filters"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" constant="1" id="1ss-cf-OPW"/>
+                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" constant="1" id="1ss-cf-OPW"/>
                             <constraint firstItem="Pjl-qc-xTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2ed-0q-FYq"/>
                             <constraint firstItem="Pjl-qc-xTu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Aje-Zc-h3b"/>
-                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" constant="1" id="Azj-N0-Pwm"/>
+                            <constraint firstItem="Pjl-qc-xTu" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" constant="1" id="Azj-N0-Pwm"/>
                             <constraint firstItem="svZ-we-e1R" firstAttribute="width" secondItem="Pjl-qc-xTu" secondAttribute="width" id="Eiq-xd-ccP"/>
+                            <constraint firstItem="1Lg-PL-Yk2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JYd-MT-z1Z"/>
+                            <constraint firstItem="eL9-XT-jhM" firstAttribute="top" secondItem="1Lg-PL-Yk2" secondAttribute="bottom" constant="8" id="Rvj-Ym-OyZ"/>
+                            <constraint firstItem="eL9-XT-jhM" firstAttribute="top" secondItem="1Lg-PL-Yk2" secondAttribute="bottom" constant="8" id="T4R-o8-aIu"/>
+                            <constraint firstItem="eL9-XT-jhM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yid-tN-zdm"/>
+                            <constraint firstItem="1Lg-PL-Yk2" firstAttribute="top" secondItem="Pjl-qc-xTu" secondAttribute="bottom" constant="8" id="aqP-x2-zrx"/>
                             <constraint firstItem="svZ-we-e1R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n44-u2-8o6"/>
                             <constraint firstItem="svZ-we-e1R" firstAttribute="height" secondItem="Pjl-qc-xTu" secondAttribute="height" id="pbI-RP-cyp"/>
                             <constraint firstItem="svZ-we-e1R" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sas-sO-AHn"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Azj-N0-Pwm"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ROt-XJ-d0I"/>
+                    <tabBarItem key="tabBarItem" title="" id="ROt-XJ-d0I"/>
                     <connections>
+                        <outlet property="addFilterToImageButton" destination="eL9-XT-jhM" id="Smw-32-pbf"/>
                         <outlet property="imageButton" destination="svZ-we-e1R" id="d27-ta-OKK"/>
                         <outlet property="imageView" destination="Pjl-qc-xTu" id="qYD-MO-DYP"/>
+                        <outlet property="uploadImageButton" destination="1Lg-PL-Yk2" id="HLw-2t-QMs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1152" y="245"/>
+        </scene>
+        <!--Empty-->
+        <scene sceneID="fv2-HV-BbG">
+            <objects>
+                <viewController id="fxy-LR-tME" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FMp-fk-nEk"/>
+                        <viewControllerLayoutGuide type="bottom" id="uIz-NJ-i2F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="61A-7b-sIM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Empty" id="s8o-Mq-Vbe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgM-nZ-Aei" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="733" y="988"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oSs-Zs-Fjp">
@@ -63,6 +108,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Osz-MR-RQi"/>
+                        <segue destination="fxy-LR-tME" kind="relationship" relationship="viewControllers" id="ezs-pw-TkT"/>
                     </connections>
                 </tabBarController>
             </objects>

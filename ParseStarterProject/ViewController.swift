@@ -15,21 +15,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var uploadImageButton: UIButton!
+    @IBOutlet weak var addFilterToImageButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
-        
     }
-    
-
     
     @IBAction func addImageButtonSelected(sender: UIButton) {
         
@@ -37,8 +34,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePickerController.delegate = self
         
         let cameraAlert = UIAlertController(title: "Select photo", message: "From...", preferredStyle: .ActionSheet)
-        
-        
         let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default) { (action) -> Void in
             
             print("Camera selected")
@@ -76,19 +71,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    @IBAction func uploadImageButton(sender: AnyObject) {
+        
+        if let image = self.imageView.image {
+            ParseService.uploadObjectToTestObject(image)
+        } else {
+            print("No image")
+        }
+    }
+    
+    
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         picker.dismissViewControllerAnimated(true, completion: nil)
-        self.imageView.image = image
-        
-        if let imageData = UIImageJPEGRepresentation(image, 0.7) {
-            
-            let imageFile = PFFile(name: "image", data: imageData)
-            let testObject = PFObject(className: "TestObject")
-            testObject["foo"] = "two"
-            testObject["image"] = imageFile
-            testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                print("Object has been saved.")
-            }
-        }
+
+//        let imageResized = image
+        let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
     }
 }
