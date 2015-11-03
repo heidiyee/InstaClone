@@ -17,6 +17,7 @@ extension UIImage {
         
         let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        print("Photo resized")
         
         return resizeImage
     }

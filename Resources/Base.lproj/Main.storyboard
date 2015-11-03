@@ -41,6 +41,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL9-XT-jhM">
                                 <rect key="frame" x="279" y="446" width="42" height="30"/>
                                 <state key="normal" title="Filters"/>
+                                <connections>
+                                    <action selector="filterImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8sX-q6-J0z"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -99,7 +102,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="oSs-Zs-Fjp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r3S-uz-C8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jgT-5m-lSA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Lle-hA-5TP">
@@ -111,6 +113,7 @@
                         <segue destination="fxy-LR-tME" kind="relationship" relationship="viewControllers" id="ezs-pw-TkT"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r3S-uz-C8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="340" y="245"/>
         </scene>

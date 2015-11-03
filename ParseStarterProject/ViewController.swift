@@ -80,12 +80,56 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    @IBAction func filterImageButton(sender: UIButton) {
+        let filterAlert = UIAlertController(title: "Filters", message: "Choose an awesome filter...", preferredStyle: .ActionSheet)
+        let vintageFilterAction = UIAlertAction(title: "Vintage", style: .Default) { (alert) -> Void in
+            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                print("Vintage filter selected")
+                if let filteredImage = filteredImage {
+                    self.imageView.image = filteredImage
+                }
+            })
+        }
+        
+        let bwFilterAction = UIAlertAction(title: "Black and White", style: .Default) { (alert) -> Void in
+            FilterService.applyBWEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                print("BW filter selected")
+                if let filteredImage = filteredImage {
+                    self.imageView.image = filteredImage
+                }
+            })
+        }
+        
+        let chromeFilterAction = UIAlertAction(title: "Chrome", style: .Default) { (alert) -> Void in
+            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                print("Chrome filter selected")
+                if let filteredImage = filteredImage {
+                    self.imageView.image = filteredImage
+                }
+            })
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        if self.imageView.image == nil {
+            vintageFilterAction.enabled = false
+            bwFilterAction.enabled = false
+            chromeFilterAction.enabled = false
+        }
+        
+        filterAlert.addAction(vintageFilterAction)
+        filterAlert.addAction(bwFilterAction)
+        filterAlert.addAction(chromeFilterAction)
+        filterAlert.addAction(cancelAction)
+        
+        self.presentViewController(filterAlert, animated: true, completion: nil)
+    }
     
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         picker.dismissViewControllerAnimated(true, completion: nil)
 
-//        let imageResized = image
         let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
+        self.imageView.image = resizedImage
+        
     }
 }
