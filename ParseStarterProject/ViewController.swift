@@ -76,7 +76,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func uploadImageButton(sender: AnyObject) {
         
         if let image = self.imageView.image {
-            ParseService.uploadObjectToTestObject(image, completion: { (success, error) -> Void in
+            ParseService.uploadObjectToStatusClass(image, completion: { (success, error) -> Void in
                 if let error = error {
                     print(error.description)
                     return
@@ -88,7 +88,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func filterImageButton(sender: UIButton) {
         let filterAlert = UIAlertController(title: "Filters", message: "Choose an awesome filter...", preferredStyle: .ActionSheet)
-        let vintageFilterAction = UIAlertAction(title: "Vintage", style: .Default) { (alert) -> Void in
+        let vintageFilterAction = UIAlertAction(title: Constants.Filters.kVintageEffectTitle, style: .Default) { (alert) -> Void in
             FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
                 print("Vintage filter selected")
                 if let filteredImage = filteredImage {
@@ -97,7 +97,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             })
         }
         
-        let bwFilterAction = UIAlertAction(title: "Black and White", style: .Default) { (alert) -> Void in
+        let bwFilterAction = UIAlertAction(title: Constants.Filters.kBWEffectTitle, style: .Default) { (alert) -> Void in
             FilterService.applyBWEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
                 print("BW filter selected")
                 if let filteredImage = filteredImage {
@@ -106,7 +106,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             })
         }
         
-        let chromeFilterAction = UIAlertAction(title: "Chrome", style: .Default) { (alert) -> Void in
+        let chromeFilterAction = UIAlertAction(title: Constants.Filters.kChromeEffectTitle, style: .Default) { (alert) -> Void in
             FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
                 print("Chrome filter selected")
                 if let filteredImage = filteredImage {

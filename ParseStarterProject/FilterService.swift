@@ -48,8 +48,8 @@ class FilterService {
     
     class func applyBWEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
         
-        let filterName = "CIPhotoEffectMono"
-        let displayName = "Black and White"
+        let filterName = Constants.Filters.kBWFilter
+        let displayName = Constants.Filters.kBWEffectTitle
         
         let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
         
@@ -60,8 +60,8 @@ class FilterService {
     
     class func applyChromeEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
         
-        let filterName = "CIPhotoEffectChrome"
-        let displayName = "Chrome"
+        let filterName = Constants.Filters.kChromeFilter
+        let displayName = Constants.Filters.kChromeEffectTitle
         
         let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
         

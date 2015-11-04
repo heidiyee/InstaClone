@@ -11,15 +11,15 @@ import Parse
 
 class ParseService {
     
-    class func uploadObjectToTestObject(image: UIImage, completion: (success: Bool, error: NSError?) -> Void ){
+    class func uploadObjectToStatusClass(image: UIImage, completion: (success: Bool, error: NSError?) -> Void ){
         
         if let imageData = UIImageJPEGRepresentation(image, 0.7) {
             
             let imageFile = PFFile(name: "image", data: imageData)
-            let testObject = PFObject(className: "TestObject")
-            testObject["foo"] = "two"
-            testObject["image"] = imageFile
-            testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            let status = PFObject(className: "Status")
+            status["description"] = "two"
+            status["image"] = imageFile
+            status.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                 print("Object has been saved.")
                 completion(success: success, error: error)
             }

@@ -17,38 +17,6 @@
             endingLineNumber = "11"
             landmarkName = "Status"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "InstaClone.Status.deinit"
-                  moduleName = "InstaClone"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/heidiyee/Documents/iOS/Apps/parse-starter-project-1.9.1/ParseStarterProject-Swift/ParseStarterProject/Status.swift"
-                  timestampString = "468311448.989076"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "8">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "InstaClone.Status.init (InstaClone.Status.Type)() -&gt; InstaClone.Status"
-                  moduleName = "InstaClone"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/heidiyee/Documents/iOS/Apps/parse-starter-project-1.9.1/ParseStarterProject-Swift/ParseStarterProject/Status.swift"
-                  timestampString = "468311448.989387"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "8">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
