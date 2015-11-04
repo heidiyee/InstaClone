@@ -8,22 +8,18 @@
 
 import Foundation
 
-struct Constants {
     
-    static let kParseApplicationId = "CxF7R0XRDhhioyTnQwkIxcC0TcUmZJngRbhy6YBk"
-    static let kParseApplicationClientKey = "3XvTQ2csex5RINLaaOBmrS9aK1u5wDYA1B7jxA1W"
-    
-    struct Filters {
-        
-        static let kVintageFilter = "CIPhotoEffectTransfer"
-        static let kVintageEffectTitle = "Vintage"
-        
-        static let kBWFilter = "CIPhotoEffectMono"
-        static let kBWEffectTitle = "Black and White"
-        
-        static let kChromeFilter = "CIPhotoEffectChrome"
-        static let kChromeEffectTitle = "Chrome"
-    }
+let kParseApplicationId = "CxF7R0XRDhhioyTnQwkIxcC0TcUmZJngRbhy6YBk"
+let kParseApplicationClientKey = "3XvTQ2csex5RINLaaOBmrS9aK1u5wDYA1B7jxA1W"
 
-}
+        
+let kVintageFilter = "CIPhotoEffectTransfer"
+let kVintageEffectTitle = "Vintage"
+let kBWFilter = "CIPhotoEffectMono"
+let kBWEffectTitle = "Black and White"
+let kChromeFilter = "CIPhotoEffectChrome"
+let kChromeEffectTitle = "Chrome"
+
+
+let kClassName = "Status"
 

@@ -16,7 +16,7 @@ class ParseService {
         if let imageData = UIImageJPEGRepresentation(image, 0.7) {
             
             let imageFile = PFFile(name: "image", data: imageData)
-            let status = PFObject(className: "Status")
+            let status = PFObject(className: kClassName )
             status["description"] = "two"
             status["image"] = imageFile
             status.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
