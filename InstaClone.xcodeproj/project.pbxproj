@@ -22,6 +22,7 @@
 		B7AC24571BE926E200E23A5A /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AC24561BE926E200E23A5A /* FilterService.swift */; };
 		B7AC24591BE9317300E23A5A /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AC24581BE9317300E23A5A /* ImageResizer.swift */; };
 		B7AC245B1BE955D200E23A5A /* ParseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AC245A1BE955D200E23A5A /* ParseService.swift */; };
+		B7AC245D1BE9AB5200E23A5A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AC245C1BE9AB5200E23A5A /* Status.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		B7AC24561BE926E200E23A5A /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
 		B7AC24581BE9317300E23A5A /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		B7AC245A1BE955D200E23A5A /* ParseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseService.swift; sourceTree = "<group>"; };
+		B7AC245C1BE9AB5200E23A5A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				B7AC24521BE7E24100E23A5A /* Constants.swift */,
 				B7AC24561BE926E200E23A5A /* FilterService.swift */,
+				B7AC245C1BE9AB5200E23A5A /* Status.swift */,
 				B7AC245A1BE955D200E23A5A /* ParseService.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				B7AC24581BE9317300E23A5A /* ImageResizer.swift */,
@@ -222,6 +225,7 @@
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				B7AC245B1BE955D200E23A5A /* ParseService.swift in Sources */,
+				B7AC245D1BE9AB5200E23A5A /* Status.swift in Sources */,
 				B7AC24571BE926E200E23A5A /* FilterService.swift in Sources */,
 				B7AC24591BE9317300E23A5A /* ImageResizer.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,

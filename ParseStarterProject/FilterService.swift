@@ -69,4 +69,16 @@ class FilterService {
             completion(filteredImage: finalImage, name: displayName)
         }
     }
+    
+    class func applyMonochromeEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
+        
+        let filterName = "CIColorMonochrome"
+        let displayName = "Monochrome"
+        
+        let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
+        
+        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+            completion(filteredImage: finalImage, name: displayName)
+        }
+    }
 }

@@ -18,6 +18,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var uploadImageButton: UIButton!
     @IBOutlet weak var addFilterToImageButton: UIButton!
     
+    var parseObject: PFObject!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -74,9 +76,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func uploadImageButton(sender: AnyObject) {
         
         if let image = self.imageView.image {
-            ParseService.uploadObjectToTestObject(image)
-        } else {
-            print("No image")
+            ParseService.uploadObjectToTestObject(image, completion: { (success, error) -> Void in
+                if let error = error {
+                    print(error.description)
+                    return
+                }
+                print("yay")
+            })
         }
     }
     
@@ -108,6 +114,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 }
             })
         }
+        
+        let monochromeFilterAction = UIAlertAction(title: "Monochrome", style: .Default) { (alert) -> Void in
+            FilterService.applyMonochromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                print("Monochrome filter selected")
+                if let filteredImage = filteredImage {
+                    self.imageView.image = filteredImage
+                }
+            })
+        }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         if self.imageView.image == nil {
@@ -119,17 +135,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         filterAlert.addAction(vintageFilterAction)
         filterAlert.addAction(bwFilterAction)
         filterAlert.addAction(chromeFilterAction)
+        filterAlert.addAction(monochromeFilterAction)
         filterAlert.addAction(cancelAction)
         
         self.presentViewController(filterAlert, animated: true, completion: nil)
     }
     
     
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         picker.dismissViewControllerAnimated(true, completion: nil)
-
+        
         let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
         self.imageView.image = resizedImage
-        
     }
 }

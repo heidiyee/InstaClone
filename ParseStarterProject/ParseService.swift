@@ -11,7 +11,7 @@ import Parse
 
 class ParseService {
     
-    class func uploadObjectToTestObject(image: UIImage) {
+    class func uploadObjectToTestObject(image: UIImage, completion: (success: Bool, error: NSError?) -> Void ){
         
         if let imageData = UIImageJPEGRepresentation(image, 0.7) {
             
@@ -21,6 +21,7 @@ class ParseService {
             testObject["image"] = imageFile
             testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                 print("Object has been saved.")
+                completion(success: success, error: error)
             }
         }
     }
