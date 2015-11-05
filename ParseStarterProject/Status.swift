@@ -14,8 +14,9 @@ class Status {
     var image: UIImage!
     var statusDescription: String!
 
-    init(image: UIImage, statusDescription: String) {
+    init(image: UIImage?, statusDescription: String? = "Description") {
         self.image = image
         self.statusDescription = statusDescription
     }
+    
 }

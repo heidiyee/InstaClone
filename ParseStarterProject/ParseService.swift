@@ -26,15 +26,15 @@ class ParseService {
         }
     }
     
-    class func getParseArrayFromParse(className: String, completion: (array: [PFObject]?, error: NSError?) -> Void){
+    class func getParseData(className: String, completion: (array: [PFObject]?, error: NSError?) -> Void) {
+        
         let parseQuery = PFQuery(className: className)
         parseQuery.findObjectsInBackgroundWithBlock { (parseObjects, error) -> Void in
             if let parseObjects = parseObjects {
                 completion(array: parseObjects,error: nil)
-                return
             }
-            print("no objects")
         }
+        
     }
 }
 

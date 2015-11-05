@@ -13,18 +13,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    var parseObject: PFObject? {
+    var statusObject: Status? {
         didSet {
-            if let parseObject = self.parseObject {
-                let data = parseObject["image"] as! PFFile
-                data.getDataInBackgroundWithBlock { (parseImage: NSData?, error) -> Void in
-                    if let parseImage = parseImage {
-                        let image = UIImage(data: parseImage)
-                        self.imageView.image = image
-                    }
-                }
+            if let statusObject = self.statusObject {
+                self.imageView.image = statusObject.image
             }
-        
         }
     }
     
