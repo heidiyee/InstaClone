@@ -9,10 +9,10 @@
 import UIKit
 import Parse
 
-class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var parseObjects = [PFObject]()
-    
+    var width: CGFloat = 0.0
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -20,8 +20,23 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        self.getParseObjects()
+        
+        let collectionViewWidth = CGRectGetWidth(self.collectionView.frame)
+        self.width = (collectionViewWidth / 5)
 
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if animated == false {
+            ParseService.getParseArrayFromParse(kClassName, completion: { (array, error) -> Void in
+                if let array = array {
+                    self.parseObjects = array
+                    self.collectionView.reloadData()
+                    return
+                }
+                print("this did not work")
+            })
+        } 
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,21 +51,10 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
 
-        
     }
     
-    func getParseObjects() {
-        let parseQuery = PFQuery(className: kClassName)
-        parseQuery.findObjectsInBackgroundWithBlock { (parseObjects, error) -> Void in
-            if let parseObjects = parseObjects {
-                self.parseObjects = parseObjects
-                self.collectionView.reloadData()
-                return
-            }
-            print("no objects")
-        }
+    
 
-    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return parseObjects.count
@@ -63,6 +67,14 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.parseObject = parseObject
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(self.width, self.width)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 2.0
     }
     
     
