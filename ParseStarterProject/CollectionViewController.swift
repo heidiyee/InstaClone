@@ -9,21 +9,23 @@
 import UIKit
 import Parse
 
+protocol CollectionViewControllerDelegate {
+    func collectionViewSelectedStatus(status: Status)
+}
+
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var statusObjects = [Status]() {
         didSet {
-            
-            print(statusObjects.count)
-            
             self.collectionView.reloadData()
-            
         }
     }
+    
     var width: CGFloat = 0.0
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var delegate: CollectionViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,10 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         
         let collectionViewWidth = CGRectGetWidth(self.collectionView.frame)
         self.width = (collectionViewWidth / 5)
-
+        
+//        let gestureTapRecognizer = UITapGestureRecognizer(target: self , action: Selector("cellSelected"))
+//        collectionView.addGestureRecognizer(gestureTapRecognizer)
+//        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -41,6 +46,11 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                 self.parseToStatus(array)
             }
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.statusObjects = [Status]()
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,6 +103,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let statusObject = self.statusObjects[indexPath.row]
         cell.statusObject = statusObject
         
+        
         return cell
     }
     
@@ -103,6 +114,21 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 2.0
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("selected")
+        if let delegate = self.delegate {
+            delegate.collectionViewSelectedStatus(self.statusObjects[indexPath.row])
+        }
+    }
+    
+    
+//    func cellSelected() {
+//        print("yasss")
+////        if let delegate = delegate {
+////            delegate.collectionViewSelectedStatus()
+////        }
+//    }
     
     
 }
