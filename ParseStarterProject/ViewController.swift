@@ -10,7 +10,7 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CollectionViewControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CollectionViewControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
@@ -18,21 +18,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var uploadImageButton: UIButton!
     @IBOutlet weak var addFilterToImageButton: UIButton!
     
-    @IBOutlet weak var vintageFilterImage: UIImageView!
-    @IBOutlet weak var bwFilterImage: UIImageView!
-    @IBOutlet weak var chromeFilterImage: UIImageView!
-    @IBOutlet weak var monochromeFilterImage: UIImageView!
+
+    @IBOutlet weak var filteredThumbnails: UICollectionView!
+    var filteredImages = [UIImage]() {
+        didSet{
+            self.filteredThumbnails.reloadData()
+        }
+    }
    
     let gestureTapReconizer = UITapGestureRecognizer()
     
     var parseObject: PFObject!
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         gestureTapReconizer.addTarget(self, action: Selector("addFilter"))
-        vintageFilterImage.addGestureRecognizer(gestureTapReconizer)
         
         
         if let tabBarController = self.tabBarController, viewControllers = tabBarController.viewControllers {
@@ -40,6 +44,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 collectionViewController.delegate = self
             }
         }
+        
+        self.filteredThumbnails.delegate = self
+        self.filteredThumbnails.dataSource = self
+        //self.createFilteredImages()
         
     }
 
@@ -167,39 +175,64 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
         self.imageView.image = resizedImage
-        
-        FilterService.applyVintageEffect(resizedImage) { (filteredImage, name) -> Void in
-            if let filteredImage = filteredImage {
-                self.vintageFilterImage.image = filteredImage
-            }
+        createFilteredImages()
 
-            
-        }
-        
-        FilterService.applyBWEffect(resizedImage) { (filteredImage, name) -> Void in
-            if let filteredImage = filteredImage {
-                self.bwFilterImage.image = filteredImage
+    }
+    
+    func createFilteredImages() {
+        self.filteredImages.removeAll()
+        if let image = self.imageView.image {
+            FilterService.applyVintageEffect(image) { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage {
+                    self.filteredImages.append(filteredImage)
+                }
             }
-        }
-        
-        FilterService.applyChromeEffect(resizedImage) { (filteredImage, name) -> Void in
-            if let filteredImage = filteredImage {
-                self.chromeFilterImage.image = filteredImage
+    
+            FilterService.applyBWEffect(image) { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage {
+                    self.filteredImages.append(filteredImage)
+                }
             }
-        }
-        
-        FilterService.applyMonochromeEffect(resizedImage) { (filteredImage, name) -> Void in
-            if let filteredImage = filteredImage {
-                self.monochromeFilterImage.image = filteredImage
+    
+            FilterService.applyChromeEffect(image) { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage {
+                    self.filteredImages.append(filteredImage)
+                }
+            }
+    
+            FilterService.applyMonochromeEffect(image) { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage {
+                    self.filteredImages.append(filteredImage)
+                }
             }
         }
     }
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filteredImages.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(FilteredCollectionViewCell.identifier(), forIndexPath: indexPath) as! FilteredCollectionViewCell
+        let image = self.filteredImages[indexPath.row]
+        cell.image = image
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let filteredImage = self.filteredImages[indexPath.row]
+        self.imageView.image = filteredImage
+    }
+    
+
     func collectionViewSelectedStatus(status: Status) {
         print("is being called")
         self.dismissViewControllerAnimated(true, completion: nil)
         self.imageView.image = status.image
         tabBarController!.selectedViewController = tabBarController!.viewControllers![0]
+        createFilteredImages()
     }
     
     

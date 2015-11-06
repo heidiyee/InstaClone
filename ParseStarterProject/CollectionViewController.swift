@@ -31,8 +31,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         super.viewDidLoad()
         self.setupView()
         
-        let collectionViewWidth = CGRectGetWidth(self.collectionView.frame)
-        self.width = (collectionViewWidth / 5)
+//        let collectionViewWidth = CGRectGetWidth(self.collectionView.frame)
+//        self.width = (collectionViewWidth / 5)
         
 //        let gestureTapRecognizer = UITapGestureRecognizer(target: self , action: Selector("cellSelected"))
 //        collectionView.addGestureRecognizer(gestureTapRecognizer)
@@ -91,9 +91,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        print(statusObjects.count)
-        
         return statusObjects.count
     }
     
@@ -108,10 +105,14 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(self.width, self.width)
+        return CGSizeMake(100, 100)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 2.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 2.0
     }
     
