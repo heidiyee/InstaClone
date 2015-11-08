@@ -49,6 +49,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.filteredThumbnails.dataSource = self
         //self.createFilteredImages()
         
+        let collectionViewBounds = CGRectGetWidth(UIScreen.mainScreen().bounds)
+        let collectionViewHeight = CGRectGetHeight(self.filteredThumbnails.frame)
+        let galleryLayout = GridLayout()
+        galleryLayout.thumbnailsFlowLayout(collectionViewBounds, viewHeight: collectionViewHeight)
+        self.filteredThumbnails.collectionViewLayout = galleryLayout
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -205,7 +212,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     self.filteredImages.append(filteredImage)
                 }
             }
+            
+            FilterService.applyInstantEffect(image) { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage {
+                    self.filteredImages.append(filteredImage)
+                }
+            }
         }
+        
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -81,4 +81,16 @@ class FilterService {
             completion(filteredImage: finalImage, name: displayName)
         }
     }
+    
+    class func applyInstantEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void){
+        
+        let filterName = "CIPhotoEffectInstant"
+        let displayName = "Instant"
+        
+        let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
+        
+        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+            completion(filteredImage: finalImage, name: displayName)
+        }
+    }
 }
