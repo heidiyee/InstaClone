@@ -107,6 +107,7 @@
 				B760B7EF1BEAA5F3009AFD3E /* Collection View */,
 				B760B7EE1BEAA5CF009AFD3E /* Edit Pictures Tab */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
+				B760B7EC1BEA963E009AFD3E /* GridLayout.swift */,
 				B7AC24521BE7E24100E23A5A /* Constants.swift */,
 				B7AC24561BE926E200E23A5A /* FilterService.swift */,
 				B7AC245C1BE9AB5200E23A5A /* Status.swift */,
@@ -155,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				B760B7F21BEAA67C009AFD3E /* GalleryViewController.swift */,
-				B760B7EC1BEA963E009AFD3E /* GridLayout.swift */,
 				B760B7EA1BEA924C009AFD3E /* GalleryCollectionViewCell.swift */,
 			);
 			name = "Collection View";

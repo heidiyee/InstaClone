@@ -10,6 +10,7 @@ import UIKit
 
 class GridLayout: UICollectionViewFlowLayout {
     
+    var cellSize: CGFloat!
     
     override init() {
         super.init()
@@ -22,20 +23,25 @@ class GridLayout: UICollectionViewFlowLayout {
     
     func galleryFlowLayout(viewWidth: CGFloat) {
         
-        self.minimumInteritemSpacing = 1.0
-        self.minimumLineSpacing = 1.0
+        self.minimumInteritemSpacing = 0
+        self.minimumLineSpacing = 0
         let numberColumns: CGFloat = 2.0
         let cellWidth = (viewWidth - self.minimumInteritemSpacing) / numberColumns
         self.itemSize = CGSize(width: cellWidth, height: cellWidth)
         print(viewWidth)
         print(cellWidth)
+        self.cellSize = cellWidth
     
     }
     
+    func getWidthSize() -> CGFloat {
+        return cellSize
+    }
+
     func thumbnailsFlowLayout(viewWidth: CGFloat, viewHeight: CGFloat) {
         
         //self.minimumInteritemSpacing = 1.0
-        self.minimumLineSpacing = 1.0
+        self.minimumLineSpacing = 2.0
         //let numberColumns: CGFloat = 2.0
         let cellWidth = viewHeight - self.minimumLineSpacing
         self.itemSize = CGSize(width: cellWidth, height: cellWidth)
@@ -43,6 +49,4 @@ class GridLayout: UICollectionViewFlowLayout {
         print("Cell Width \(cellWidth)")
 
     }
-    
-    
 }

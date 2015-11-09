@@ -11,6 +11,7 @@ import UIKit
 class FilteredCollectionViewCell: UICollectionViewCell  {
     
     @IBOutlet weak var filteredImage: UIImageView!
+    
     var image: UIImage? {
         didSet {
             if let image = image {

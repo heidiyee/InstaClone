@@ -23,21 +23,30 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
     var delegate: CollectionViewControllerDelegate?
+    
+    var cellSize: CGFloat = 1.0 {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
         
-        let collectionViewBounds = CGRectGetWidth(UIScreen.mainScreen().bounds)
-        let galleryLayout = GridLayout()
-        galleryLayout.galleryFlowLayout(collectionViewBounds)
-        self.collectionView.collectionViewLayout = galleryLayout
+//        let collectionViewBounds = CGRectGetWidth(UIScreen.mainScreen().bounds)
+//        let galleryLayout = GridLayout()
+//        galleryLayout.galleryFlowLayout(collectionViewBounds)
+//        self.collectionView.collectionViewLayout = galleryLayout
+//        cellSize = galleryLayout.getWidthSize()
         
         
         let gesturePinchRecognizer = UIPinchGestureRecognizer(target: self , action: Selector("scaleCollectionWhenPinched:"))
         collectionView.addGestureRecognizer(gesturePinchRecognizer)
+        
+
 
     }
     
@@ -96,8 +105,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageCollectionViewCell", forIndexPath: indexPath) as! ImageCollectionViewCell
         let statusObject = self.statusObjects[indexPath.row]
         cell.statusObject = statusObject
-        
-        
         return cell
     }
 
@@ -109,20 +116,33 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let collectionViewBounds = CGRectGetWidth(UIScreen.mainScreen().bounds)
+        let numberColumns: CGFloat = 2.0
+        let cellWidth = (collectionViewBounds / numberColumns) * cellSize
+        return CGSize(width: cellWidth, height: cellWidth)
+    }
+    
     
     func scaleCollectionWhenPinched(sender: UIPinchGestureRecognizer) {
-//        sender.view!.transform = CGAffineTransformScale(sender.view!.transform, sender.scale, sender.scale)
-        
         print(sender.velocity)
-        //print(sender.scale)
-        
-        //sender.scale = 10.0
-        //cellSize += sender.scale
-        //self.collectionView.reloadData()
-        
-        
-
-        
+        sender.scale = 0.1
+        if sender.velocity > 0 {
+            self.cellSize += sender.scale
+        } else {
+            if cellSize > 0.2 {
+                self.cellSize -= sender.scale
+            }
+        }
+        print(cellSize)
     }
     
     
