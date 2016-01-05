@@ -133,7 +133,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     
     func scaleCollectionWhenPinched(sender: UIPinchGestureRecognizer) {
-        print(sender.velocity)
+        print("Velocity is \(sender.velocity)")
         sender.scale = 0.1
         if sender.velocity > 0 {
             self.cellSize += sender.scale

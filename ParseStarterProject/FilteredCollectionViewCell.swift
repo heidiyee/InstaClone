@@ -11,11 +11,13 @@ import UIKit
 class FilteredCollectionViewCell: UICollectionViewCell  {
     
     @IBOutlet weak var filteredImage: UIImageView!
+    @IBOutlet weak var filterNameLabel: UILabel!
     
-    var image: UIImage? {
+    var image: (UIImage, String)? {
         didSet {
             if let image = image {
-                self.filteredImage.image = image
+                self.filteredImage.image = image.0
+                self.filterNameLabel.text = image.1
             }
         }
     }

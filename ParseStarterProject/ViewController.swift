@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var filteredImageCollectionView: UICollectionView!
 
-    var filteredImages = [UIImage]() {
+    var filteredImages:[(image: UIImage, name: String)] = [] {
         didSet{
             self.filteredImageCollectionView.reloadData()
         }
@@ -190,31 +190,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let image = self.imageView.image {
             FilterService.applyVintageEffect(image) { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage {
-                    self.filteredImages.append(filteredImage)
+                    self.filteredImages.append(image: filteredImage, name: name)
                 }
             }
     
             FilterService.applyBWEffect(image) { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage {
-                    self.filteredImages.append(filteredImage)
+                    self.filteredImages.append(image: filteredImage, name: name)
                 }
             }
     
             FilterService.applyChromeEffect(image) { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage {
-                    self.filteredImages.append(filteredImage)
+                    self.filteredImages.append(image: filteredImage, name: name)
                 }
             }
     
             FilterService.applyMonochromeEffect(image) { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage {
-                    self.filteredImages.append(filteredImage)
+                    self.filteredImages.append(image: filteredImage, name: name)
                 }
             }
             
             FilterService.applyInstantEffect(image) { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage {
-                    self.filteredImages.append(filteredImage)
+                    self.filteredImages.append(image: filteredImage, name: name)
                 }
             }
         }
@@ -234,14 +234,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let filteredImage = filteredImages[indexPath.row]
+        let filteredImage = filteredImages[indexPath.row].image
         self.imageView.image = filteredImage
     }     
 
     func collectionViewSelectedStatus(status: Status) {
+        tabBarController!.selectedViewController = tabBarController!.viewControllers![0]
         self.dismissViewControllerAnimated(true, completion: nil)
         self.imageView.image = status.image
-        tabBarController!.selectedViewController = tabBarController!.viewControllers![0]
         createFilteredImages()
         self.filteredImageCollectionView.hidden = false
     }

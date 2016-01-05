@@ -104,16 +104,16 @@
 		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
 			isa = PBXGroup;
 			children = (
-				B760B7EF1BEAA5F3009AFD3E /* Collection View */,
-				B760B7EE1BEAA5CF009AFD3E /* Edit Pictures Tab */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				B760B7EC1BEA963E009AFD3E /* GridLayout.swift */,
 				B7AC24521BE7E24100E23A5A /* Constants.swift */,
+				B760B7EF1BEAA5F3009AFD3E /* Views */,
+				B77DE3B61C3B1E1000F08FC8 /* VC */,
 				B7AC24561BE926E200E23A5A /* FilterService.swift */,
-				B7AC245C1BE9AB5200E23A5A /* Status.swift */,
 				B7AC245A1BE955D200E23A5A /* ParseService.swift */,
-				814C3AC61B69877600E307BB /* Main.storyboard */,
 				B7AC24581BE9317300E23A5A /* ImageResizer.swift */,
+				B7AC245C1BE9AB5200E23A5A /* Status.swift */,
+				814C3AC61B69877600E307BB /* Main.storyboard */,
 				B7AC24541BE8129500E23A5A /* Splash.storyboard */,
 			);
 			path = ParseStarterProject;
@@ -143,22 +143,22 @@
 			name = "System Frameworks";
 			sourceTree = "<group>";
 		};
-		B760B7EE1BEAA5CF009AFD3E /* Edit Pictures Tab */ = {
+		B760B7EF1BEAA5F3009AFD3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B760B7EA1BEA924C009AFD3E /* GalleryCollectionViewCell.swift */,
 				B760B7F41BED1750009AFD3E /* FilteredCollectionViewCell.swift */,
-				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 			);
-			name = "Edit Pictures Tab";
+			name = Views;
 			sourceTree = "<group>";
 		};
-		B760B7EF1BEAA5F3009AFD3E /* Collection View */ = {
+		B77DE3B61C3B1E1000F08FC8 /* VC */ = {
 			isa = PBXGroup;
 			children = (
 				B760B7F21BEAA67C009AFD3E /* GalleryViewController.swift */,
-				B760B7EA1BEA924C009AFD3E /* GalleryCollectionViewCell.swift */,
+				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 			);
-			name = "Collection View";
+			name = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,7 +189,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Parse;
 				TargetAttributes = {
 					81BA81441A49DA1800E65899 = {
@@ -300,6 +300,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -371,6 +372,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = InstaClone;
 				PROVISIONING_PROFILE = "";
 			};
@@ -388,6 +390,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = InstaClone;
 				PROVISIONING_PROFILE = "";
 			};
