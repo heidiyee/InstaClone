@@ -31,19 +31,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        if let tabBarController = self.tabBarController, viewControllers = tabBarController.viewControllers {
-            if let collectionViewController = viewControllers[1] as? CollectionViewController {
-                collectionViewController.delegate = self
-            }
-        }
+        self.setupNavigationItem()
         
         self.filteredImageCollectionView.delegate = self
         self.filteredImageCollectionView.dataSource = self
         self.createFilteredImages()
         self.filteredImageCollectionView.hidden = true
-
 
         let collectionViewBounds = CGRectGetWidth(UIScreen.mainScreen().bounds)
         let collectionViewHeight = CGRectGetHeight(self.filteredImageCollectionView.frame)
@@ -60,6 +54,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: Select image
     
     @IBAction func addImageButtonSelected(sender: UIButton) {
         
@@ -104,6 +100,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
+        self.imageView.image = resizedImage
+        createFilteredImages()
+        self.filteredImageCollectionView.hidden = false
+        
+    }
+    
+    //MARK: Upload Image
+    
     @IBAction func uploadImageButton(sender: AnyObject) {
         
         if let image = self.imageView.image {
@@ -116,6 +124,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             })
         }
     }
+    
+    //MARK: Add filter
     
     @IBAction func filterImageButton(sender: UIButton) {
         let filterAlert = UIAlertController(title: "Filters", message: "Choose an awesome filter...", preferredStyle: .ActionSheet)
@@ -173,17 +183,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(filterAlert, animated: true, completion: nil)
     }
     
-    
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
-        
-        let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
-        self.imageView.image = resizedImage
-        createFilteredImages()
-        self.filteredImageCollectionView.hidden = false
-
-    }
+    //MARK: Filter images for collection view
     
     func createFilteredImages() {
         self.filteredImages.removeAll()
@@ -220,6 +220,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    //MARK: Collection view delegate 
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredImages.count
     }
@@ -239,11 +241,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }     
 
     func collectionViewSelectedStatus(status: Status) {
-        tabBarController!.selectedViewController = tabBarController!.viewControllers![0]
         self.dismissViewControllerAnimated(true, completion: nil)
+        tabBarController!.selectedViewController = tabBarController!.viewControllers![0]
         self.imageView.image = status.image
         createFilteredImages()
         self.filteredImageCollectionView.hidden = false
+    }
+    
+    //MARK: Navigation button
+    
+    func setupNavigationItem() {
+        let rightButtonItem = UIBarButtonItem(image: UIImage(named: "0015-images"), style: .Plain, target: self, action: "barButtonPressed:")
+        self.navigationItem.setRightBarButtonItem(rightButtonItem, animated: true)
+    }
+    
+    func barButtonPressed(sender: UIBarButtonItem) {
+        
     }
     
 }

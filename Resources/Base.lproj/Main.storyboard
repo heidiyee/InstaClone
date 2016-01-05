@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jgT-5m-lSA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JJp-TX-jyM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -168,7 +168,7 @@
                             <constraint firstItem="Pjl-qc-xTu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="1" id="1ss-cf-OPW"/>
                             <constraint firstItem="Pjl-qc-xTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2ed-0q-FYq"/>
                             <constraint firstItem="Pjl-qc-xTu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="3Nz-hr-RSj">
-                                <variation key="heightClass=regular" constant="8"/>
+                                <variation key="heightClass=regular" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bzo-se-Qjf" secondAttribute="bottom" id="6Js-BD-Hqs"/>
                             <constraint firstItem="svZ-we-e1R" firstAttribute="top" secondItem="Pjl-qc-xTu" secondAttribute="bottom" constant="25" id="95h-1i-Lt0"/>
@@ -243,7 +243,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add Image" id="ROt-XJ-d0I"/>
+                    <navigationItem key="navigationItem" id="WaZ-tN-TgF"/>
                     <connections>
                         <outlet property="addFilterToImageButton" destination="eL9-XT-jhM" id="Smw-32-pbf"/>
                         <outlet property="filteredImageCollectionView" destination="bzo-se-Qjf" id="XSf-sY-RVE"/>
@@ -254,12 +254,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="244.5"/>
+            <point key="canvasLocation" x="1964" y="244.5"/>
         </scene>
         <!--Empty-->
         <scene sceneID="fv2-HV-BbG">
             <objects>
-                <viewController storyboardIdentifier="CollectionViewController" id="fxy-LR-tME" customClass="CollectionViewController" customModule="InstaClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CollectionViewController" id="fxy-LR-tME" customClass="CollectionViewController" customModule="InstaClone" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FMp-fk-nEk"/>
                         <viewControllerLayoutGuide type="bottom" id="uIz-NJ-i2F"/>
@@ -427,25 +427,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgM-nZ-Aei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160" y="985.5"/>
+            <point key="canvasLocation" x="1964" y="925.5"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="oSs-Zs-Fjp">
+        <!--Add Image-->
+        <scene sceneID="haF-jc-eIy">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jgT-5m-lSA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JJp-TX-jyM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Add Image" id="ROt-XJ-d0I"/>
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="Lle-hA-5TP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nQi-Ge-9eL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Osz-MR-RQi"/>
-                        <segue destination="fxy-LR-tME" kind="relationship" relationship="viewControllers" id="ezs-pw-TkT"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fUR-bJ-o7x"/>
                     </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r3S-uz-C8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HJI-am-FZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="340" y="245"/>
+            <point key="canvasLocation" x="1152" y="244.5"/>
         </scene>
     </scenes>
     <resources>
