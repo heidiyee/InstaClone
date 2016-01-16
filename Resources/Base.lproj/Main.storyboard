@@ -346,6 +346,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="fxy-LR-tME" id="Bef-2r-HVf"/>
+                                    <outlet property="delegate" destination="fxy-LR-tME" id="6qC-av-KM5"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -422,7 +426,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Empty" id="s8o-Mq-Vbe"/>
                     <connections>
-                        <outlet property="collectionView" destination="dvF-RO-Dgn" id="YzD-2t-cvZ"/>
+                        <outlet property="collectionView" destination="dvF-RO-Dgn" id="Uft-rI-hcR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgM-nZ-Aei" userLabel="First Responder" sceneMemberID="firstResponder"/>

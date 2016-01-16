@@ -242,7 +242,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func collectionViewSelectedStatus(status: Status) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        tabBarController!.selectedViewController = tabBarController!.viewControllers![0]
         self.imageView.image = status.image
         createFilteredImages()
         self.filteredImageCollectionView.hidden = false
@@ -256,7 +255,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func barButtonPressed(sender: UIBarButtonItem) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let galleryVC = storyboard.instantiateViewControllerWithIdentifier(CollectionViewController.identifier()) as!CollectionViewController
+        galleryVC.delegate = self
+        self.presentViewController(galleryVC, animated: true, completion: nil)
     }
     
 }

@@ -15,6 +15,8 @@ protocol CollectionViewControllerDelegate {
 
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var statusObjects = [Status]() {
         didSet {
             self.collectionView.reloadData()
@@ -22,7 +24,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
 
-    @IBOutlet weak var collectionView: UICollectionView!
     var delegate: CollectionViewControllerDelegate?
     
     var cellSize: CGFloat = 1.0 {
@@ -34,7 +35,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupView()
         
 //        let collectionViewBounds = CGRectGetWidth(UIScreen.mainScreen().bounds)
 //        let galleryLayout = GridLayout()
@@ -88,13 +88,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         
         
     }
-    
-    func setupView() {
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-
-    }
-    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return statusObjects.count
