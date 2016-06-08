@@ -17,9 +17,10 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
-		B760B7EB1BEA924C009AFD3E /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B7EA1BEA924C009AFD3E /* ImageCollectionViewCell.swift */; };
+		B760B7EB1BEA924C009AFD3E /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B7EA1BEA924C009AFD3E /* GalleryCollectionViewCell.swift */; };
 		B760B7ED1BEA963E009AFD3E /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B7EC1BEA963E009AFD3E /* GridLayout.swift */; };
-		B760B7F31BEAA67C009AFD3E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B7F21BEAA67C009AFD3E /* CollectionViewController.swift */; };
+		B760B7F31BEAA67C009AFD3E /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B7F21BEAA67C009AFD3E /* GalleryViewController.swift */; };
+		B760B7F51BED1750009AFD3E /* FilteredCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760B7F41BED1750009AFD3E /* FilteredCollectionViewCell.swift */; };
 		B7AC24531BE7E24100E23A5A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AC24521BE7E24100E23A5A /* Constants.swift */; };
 		B7AC24551BE8129500E23A5A /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7AC24541BE8129500E23A5A /* Splash.storyboard */; };
 		B7AC24571BE926E200E23A5A /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AC24561BE926E200E23A5A /* FilterService.swift */; };
@@ -44,9 +45,10 @@
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		B760B7EA1BEA924C009AFD3E /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		B760B7EA1BEA924C009AFD3E /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		B760B7EC1BEA963E009AFD3E /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
-		B760B7F21BEAA67C009AFD3E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		B760B7F21BEAA67C009AFD3E /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		B760B7F41BED1750009AFD3E /* FilteredCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7AC24521BE7E24100E23A5A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B7AC24541BE8129500E23A5A /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		B7AC24561BE926E200E23A5A /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
@@ -102,15 +104,16 @@
 		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
 			isa = PBXGroup;
 			children = (
-				B760B7EF1BEAA5F3009AFD3E /* Collection View */,
-				B760B7EE1BEAA5CF009AFD3E /* Edit Pictures Tab */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
+				B760B7EC1BEA963E009AFD3E /* GridLayout.swift */,
 				B7AC24521BE7E24100E23A5A /* Constants.swift */,
+				B760B7EF1BEAA5F3009AFD3E /* Views */,
+				B77DE3B61C3B1E1000F08FC8 /* VC */,
 				B7AC24561BE926E200E23A5A /* FilterService.swift */,
-				B7AC245C1BE9AB5200E23A5A /* Status.swift */,
 				B7AC245A1BE955D200E23A5A /* ParseService.swift */,
-				814C3AC61B69877600E307BB /* Main.storyboard */,
 				B7AC24581BE9317300E23A5A /* ImageResizer.swift */,
+				B7AC245C1BE9AB5200E23A5A /* Status.swift */,
+				814C3AC61B69877600E307BB /* Main.storyboard */,
 				B7AC24541BE8129500E23A5A /* Splash.storyboard */,
 			);
 			path = ParseStarterProject;
@@ -140,22 +143,22 @@
 			name = "System Frameworks";
 			sourceTree = "<group>";
 		};
-		B760B7EE1BEAA5CF009AFD3E /* Edit Pictures Tab */ = {
+		B760B7EF1BEAA5F3009AFD3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				81BA814C1A49DA1800E65899 /* ViewController.swift */,
+				B760B7EA1BEA924C009AFD3E /* GalleryCollectionViewCell.swift */,
+				B760B7F41BED1750009AFD3E /* FilteredCollectionViewCell.swift */,
 			);
-			name = "Edit Pictures Tab";
+			name = Views;
 			sourceTree = "<group>";
 		};
-		B760B7EF1BEAA5F3009AFD3E /* Collection View */ = {
+		B77DE3B61C3B1E1000F08FC8 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				B760B7F21BEAA67C009AFD3E /* CollectionViewController.swift */,
-				B760B7EC1BEA963E009AFD3E /* GridLayout.swift */,
-				B760B7EA1BEA924C009AFD3E /* ImageCollectionViewCell.swift */,
+				B760B7F21BEAA67C009AFD3E /* GalleryViewController.swift */,
+				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 			);
-			name = "Collection View";
+			name = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,7 +189,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Parse;
 				TargetAttributes = {
 					81BA81441A49DA1800E65899 = {
@@ -250,13 +253,14 @@
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				B7AC245B1BE955D200E23A5A /* ParseService.swift in Sources */,
-				B760B7EB1BEA924C009AFD3E /* ImageCollectionViewCell.swift in Sources */,
+				B760B7EB1BEA924C009AFD3E /* GalleryCollectionViewCell.swift in Sources */,
 				B7AC245D1BE9AB5200E23A5A /* Status.swift in Sources */,
-				B760B7F31BEAA67C009AFD3E /* CollectionViewController.swift in Sources */,
+				B760B7F31BEAA67C009AFD3E /* GalleryViewController.swift in Sources */,
 				B7AC24571BE926E200E23A5A /* FilterService.swift in Sources */,
 				B7AC24591BE9317300E23A5A /* ImageResizer.swift in Sources */,
 				B760B7ED1BEA963E009AFD3E /* GridLayout.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				B760B7F51BED1750009AFD3E /* FilteredCollectionViewCell.swift in Sources */,
 				B7AC24531BE7E24100E23A5A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +300,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -367,6 +372,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = InstaClone;
 				PROVISIONING_PROFILE = "";
 			};
@@ -384,6 +390,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = InstaClone;
 				PROVISIONING_PROFILE = "";
 			};

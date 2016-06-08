@@ -9,28 +9,44 @@
 import UIKit
 import Parse
 
+protocol CollectionViewControllerDelegate {
+    func collectionViewSelectedStatus(status: Status)
+}
+
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var statusObjects = [Status]() {
         didSet {
-            
-            print(statusObjects.count)
-            
             self.collectionView.reloadData()
-            
         }
     }
-    var width: CGFloat = 0.0
-
-    @IBOutlet weak var collectionView: UICollectionView!
     
+
+    var delegate: CollectionViewControllerDelegate?
+    
+    var cellSize: CGFloat = 1.0 {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupView()
         
-        let collectionViewWidth = CGRectGetWidth(self.collectionView.frame)
-        self.width = (collectionViewWidth / 5)
+//        let collectionViewBounds = CGRectGetWidth(UIScreen.mainScreen().bounds)
+//        let galleryLayout = GridLayout()
+//        galleryLayout.galleryFlowLayout(collectionViewBounds)
+//        self.collectionView.collectionViewLayout = galleryLayout
+//        cellSize = galleryLayout.getWidthSize()
+        
+        
+        let gesturePinchRecognizer = UIPinchGestureRecognizer(target: self , action: Selector("scaleCollectionWhenPinched:"))
+        collectionView.addGestureRecognizer(gesturePinchRecognizer)
+        
+
 
     }
     
@@ -41,6 +57,11 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                 self.parseToStatus(array)
             }
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.statusObjects = [Status]()
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,11 +81,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                     if let parseImage = parseImage {
                         let image = UIImage(data: parseImage)
                         let status = Status(image: image)
-                        
-                        if NSThread.currentThread().isMainThread {
-                            print("Main thread...")
-                        }
-                        
                         self.statusObjects.append(status)
                     }
                 }
@@ -73,17 +89,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
-    func setupView() {
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-
-    }
-    
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        print(statusObjects.count)
-        
         return statusObjects.count
     }
     
@@ -92,16 +98,44 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageCollectionViewCell", forIndexPath: indexPath) as! ImageCollectionViewCell
         let statusObject = self.statusObjects[indexPath.row]
         cell.statusObject = statusObject
-        
         return cell
     }
+
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(self.width, self.width)
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("selected")
+        if let delegate = self.delegate {
+            delegate.collectionViewSelectedStatus(self.statusObjects[indexPath.row])
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 2.0
+        return 0.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let collectionViewBounds = CGRectGetWidth(UIScreen.mainScreen().bounds)
+        let numberColumns: CGFloat = 2.0
+        let cellWidth = (collectionViewBounds / numberColumns) * cellSize
+        return CGSize(width: cellWidth, height: cellWidth)
+    }
+    
+    
+    func scaleCollectionWhenPinched(sender: UIPinchGestureRecognizer) {
+        print("Velocity is \(sender.velocity)")
+        sender.scale = 0.1
+        if sender.velocity > 0 {
+            self.cellSize += sender.scale
+        } else {
+            if cellSize > 0.2 {
+                self.cellSize -= sender.scale
+            }
+        }
+        print(cellSize)
     }
     
     
