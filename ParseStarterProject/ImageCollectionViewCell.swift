@@ -7,8 +7,24 @@
 //
 
 import UIKit
+import Parse
 
 class ImageCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var statusObject: Status? {
+        didSet {
+            if let statusObject = self.statusObject {
+                self.imageView.image = statusObject.image
+            }
+        }
+    }
+    
+    
+    class func identifier() -> String {
+        return "ImageCollectionViewCell"
+    }
     
     
 }

@@ -16,7 +16,7 @@ class ParseService {
         if let imageData = UIImageJPEGRepresentation(image, 0.7) {
             
             let imageFile = PFFile(name: "image", data: imageData)
-            let status = PFObject(className: "Status")
+            let status = PFObject(className: kClassName )
             status["description"] = "two"
             status["image"] = imageFile
             status.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
@@ -24,6 +24,17 @@ class ParseService {
                 completion(success: success, error: error)
             }
         }
+    }
+    
+    class func getParseData(className: String, completion: (array: [PFObject]?, error: NSError?) -> Void) {
+        
+        let parseQuery = PFQuery(className: className)
+        parseQuery.findObjectsInBackgroundWithBlock { (parseObjects, error) -> Void in
+            if let parseObjects = parseObjects {
+                completion(array: parseObjects,error: nil)
+            }
+        }
+        
     }
 }
 
